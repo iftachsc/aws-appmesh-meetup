@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>My Sample</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script type="text/javascript"> 
+var new_num = 40; // global variable
+
+
+jQuery(document).ready(function(){ 
+	
+	http://api.jquery.com/css/
+	
+	var arr = Array.from(Array(100).keys())
+	//$('#container').hide();
+	$.each( arr, function( index, value ){
+    
+	var number = this;
+
+	$.ajax({
+	  
+      //url: "http://apigateway.stagingmesh.cloudzone.io",
+      url: "http://localhost",
+      crossDomain: true,
+      dataType: "html",   //expect html to be 
+      success: function(data){
+      	$('<div class="smallDiv" style="border-radius: 6px;background-color: '+data+';margin-top: 20px;opacity: 0.8;margin-left:20px;float: left;height:50px;width: 50px" />').appendTo('#container').hide().fadeIn( "slow", function() {
+    // Animation complete
+  	});
+      	//$('#container').append('<div class="smallDiv" style="background-color: '+data+';margin-top: 20px;margin-left:20px;float: left;height:50px;width: 50px" />').fadeIn( "slow", function() {
+    // Animation complete
+  	//});;
+      }
+
+    });
+  })
+	
+});
+</script>
+</head>
+<body>
+
+	<h3>Hello World</h3>
+
+	<div class="container" id="container" style="background-color:#2E2E2E;border-radius: 20px;border: 2px solid white;padding:20px;width: 1000px;display:table;padding-bottom:20px" ></div>
+
+</body>
+</html>
