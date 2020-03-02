@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Sample</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script type="text/javascript"> 
+var new_num = 40; // global variable
+
+
+jQuery(document).ready(function(){ 
+	
+	//http://api.jquery.com/css/
+	
+	var arr = Array.from(Array(112).keys())
+	//$('#container').hide();
+	$.each( arr, function( index, value ){
+    
+  	var number = this;
+
+    var div = $('<div class="smallDiv" style="border: 1px solid white;border-radius: 6px;margin-top: 20px;opacity: 0.9;margin-left:20px;float: left;height:50px;width: 50px" />').appendTo('#container').hide()
+  	$.ajax({
+  	   
+        //url: "http://apigateway.stagingmesh.cloudzone.io",
+        url: "/api",
+        crossDomain: true,
+        dataType: "html",   //expect html to be 
+        async: true,
+        success: function(data){
+          div.css('background-color', data);
+        	div.fadeIn( "fast", function() {
+          // Animation complete
+    	 });
+        
+      }
+
+      });
+  })
+	
+});
+</script>
+</head>
+<body>
+
+	<h3>Hello World</h3>
+
+	<div class="container" id="container" style="background-color:#2E2E2E;border-radius: 20px;border: 2px solid white;padding:20px;width: 1000px;display:table;padding-bottom:35px;height: 600px" ></div>
+
+</body>
+</html>
+
