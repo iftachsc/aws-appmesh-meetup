@@ -1,0 +1,84 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "40"
+  creationTimestamp: "2020-02-23T12:37:22Z"
+  generation: 44
+  labels:
+    run: dashboard
+  name: dashboard
+  namespace: staging
+  resourceVersion: "695712"
+  selfLink: /apis/extensions/v1beta1/namespaces/staging/deployments/dashboard
+  uid: 3d0191f4-5639-11ea-8b1a-02ccc018e14e
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: dashboard
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        appmesh.k8s.aws/mesh: cloudzone-staging
+        appmesh.k8s.aws/virtualNode: dashboard-staging
+      creationTimestamp: null
+      labels:
+        date: "1582818027"
+        run: dashboard
+    spec:
+      containers:
+      - env:
+        - name: COLOR_URL
+          value: http://color.appmesh.demo.local:8080
+        image: iftachsc/meshdash:1.0
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: dashboard
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2020-02-27T14:26:57Z"
+    lastUpdateTime: "2020-02-27T14:26:57Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-02-23T12:37:22Z"
+    lastUpdateTime: "2020-02-27T15:40:43Z"
+    message: ReplicaSet "dashboard-84b76c747b" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 44
+  readyReplicas: 2
+  replicas: 2
+  updatedReplicas: 2

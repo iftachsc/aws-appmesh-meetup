@@ -1,0 +1,45 @@
+body { background: #efefef url('./background.jpeg') repeat fixed top left; }
+
+
+h1 {
+  color: white;
+  font: courier;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-family: courier;
+}
+
+.header-img { 
+  content:url('./cloudzone-white-logo.png');
+  width: 150px;
+  height: auto;
+  background-size: cover;
+  float: right;
+  margin-right: 20px; 
+  margin-top: -10px;  
+
+}
+
+.container { 
+	width: 80%;
+	height: 80%;
+  	margin: 0 auto;
+  	margin-top: 5%;
+  	opacity: 0.85;
+  	border-radius: 20px;
+  	background-color:#2E2E2E;
+  	border: 1px solid grey;
+  	padding:10px;
+  	display:table;
+  	padding-bottom:25px;
+  	padding-left:0px;
+}
+.smallDiv {
+	border: 1px solid white;
+	border-radius: 6px;
+	margin-top: 20px;
+	margin-left:20px;
+	float: left;
+	height:50px;
+	width: 50px;
+}

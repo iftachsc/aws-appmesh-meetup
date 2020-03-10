@@ -1,0 +1,18 @@
+apiVersion: appmesh.k8s.aws/v1beta1
+kind: VirtualNode
+metadata:
+  name: dashboard
+  namespace: staging
+spec:
+  meshName: cloudzone-staging
+  listeners:
+  - portMapping:
+      port: 8080
+      protocol: http
+  serviceDiscovery:
+    cloudMap:
+      serviceName: dashboard
+      namespaceName: appmesh.demo.local
+  backends:
+    - virtualService:
+        virtualServiceName: color.appmesh.demo.local

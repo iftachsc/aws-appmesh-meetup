@@ -1,0 +1,22 @@
+apiVersion: appmesh.k8s.aws/v1beta1
+kind: VirtualService
+metadata:
+  name: dashboard
+  namespace: staging
+spec:
+  meshName: cloudzone-staging
+  virtualRouter:
+    name: dashboard-router
+    listeners:
+    - portMapping:
+        port: 8080
+        protocol: http
+  routes:
+    - name: route-all-to-dashboard
+      http:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeName: dashboard
+              weight: 1

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Sample</title>
+<div class="header-img"></div>
+<title>Jungle Mesh</title>
+<link rel="stylesheet" type="text/css" href="/style.css" media="screen"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
 <script type="text/javascript"> 
 var new_num = 40; // global variable
@@ -11,13 +13,13 @@ jQuery(document).ready(function(){
 	
 	//http://api.jquery.com/css/
 	
-	var arr = Array.from(Array(112).keys())
+	var arr = Array.from(Array(104).keys())
 	//$('#container').hide();
 	$.each( arr, function( index, value ){
     
   	var number = this;
 
-    var div = $('<div class="smallDiv" style="border: 1px solid white;border-radius: 6px;margin-top: 20px;opacity: 0.9;margin-left:20px;float: left;height:50px;width: 50px" />').appendTo('#container').hide()
+    var div = $('<div class="smallDiv" />').appendTo('#container').hide()
   	$.ajax({
   	   
         //url: "http://apigateway.stagingmesh.cloudzone.io",
@@ -41,9 +43,9 @@ jQuery(document).ready(function(){
 </head>
 <body>
 
-	<h3>Hello World</h3>
+	<h1>The Jungle Mesh</h1>
 
-	<div class="container" id="container" style="background-color:#2E2E2E;border-radius: 20px;border: 2px solid white;padding:20px;width: 1000px;display:table;padding-bottom:35px;height: 600px" ></div>
+	<div class="container" id="container"></div>
 
 </body>
 </html>
